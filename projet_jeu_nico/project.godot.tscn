@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dbmvbfvan8544"]
+[gd_scene load_steps=2 format=3 uid="uid://dbmvbfvan8544"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ry48v"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,3 +19,6 @@ offset_bottom = 69.0
 toggle_mode = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button"]
+sprite_frames = SubResource("SpriteFrames_ry48v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
