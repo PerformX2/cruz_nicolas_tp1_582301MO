@@ -1,6 +1,8 @@
-[gd_scene load_steps=51 format=3 uid="uid://dbmvbfvan8544"]
+[gd_scene load_steps=57 format=3 uid="uid://dbmvbfvan8544"]
 
+[ext_resource type="Script" uid="uid://bfiypygqnkq6t" path="res://soundbutton_1_interrupteur_toggle.gd" id="1_8vigj"]
 [ext_resource type="Texture2D" uid="uid://b2oyiihqyahkp" path="res://assets/images/AnimationSheet_Character_split/tile000.png" id="1_cmru6"]
+[ext_resource type="AudioStream" uid="uid://2gpsobav3pmi" path="res://assets/audio/feux.wav" id="1_u7k4a"]
 [ext_resource type="Texture2D" uid="uid://thnexdvje80g" path="res://assets/images/AnimationSheet_Character_split/tile064.png" id="1_xducm"]
 [ext_resource type="Texture2D" uid="uid://bknapo5jvrqnv" path="res://assets/images/AnimationSheet_Character_split/tile001.png" id="2_26v4c"]
 [ext_resource type="Texture2D" uid="uid://c24v2jwabhg2o" path="res://assets/images/AnimationSheet_Character_split/tile065.png" id="2_yeknk"]
@@ -45,10 +47,14 @@
 [ext_resource type="Texture2D" uid="uid://go0i2wiprmgn" path="res://assets/images/AnimationSheet_Character_split/tile048.png" id="43_3m071"]
 [ext_resource type="Texture2D" uid="uid://cjox64apmrrk1" path="res://assets/images/AnimationSheet_Character_split/tile049.png" id="44_gm4hr"]
 [ext_resource type="Texture2D" uid="uid://bc5pn63v4kltk" path="res://assets/images/AnimationSheet_Character_split/tile050.png" id="45_fvppr"]
+[ext_resource type="Texture2D" uid="uid://djf2sgmfoui08" path="res://assets/images/AnimationSheet_Character_split/tile051.png" id="46_bkxak"]
 [ext_resource type="Texture2D" uid="uid://ma68i4mvwe4x" path="res://assets/images/AnimationSheet_Character_split/tile016.png" id="46_v1h42"]
 [ext_resource type="Texture2D" uid="uid://bds5udcysb6qj" path="res://assets/images/AnimationSheet_Character_split/tile017.png" id="47_luo6d"]
+[ext_resource type="Texture2D" uid="uid://cml3mxiht8h0s" path="res://assets/images/AnimationSheet_Character_split/tile053.png" id="47_p34t8"]
 [ext_resource type="Texture2D" uid="uid://drv55bpe4puuq" path="res://assets/images/AnimationSheet_Character_split/tile018.png" id="48_lh5hq"]
 [ext_resource type="Texture2D" uid="uid://w43q00cpjbgc" path="res://assets/images/AnimationSheet_Character_split/tile019.png" id="49_nltb4"]
+[ext_resource type="Script" uid="uid://bx4pg6r8uo7ro" path="res://animated_sprite_2d.gd" id="52_p34t8"]
+[ext_resource type="Script" uid="uid://duxvgtxg5c2wo" path="res://button_sound.gd" id="53_jec38"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ry48v"]
 animations = [{
@@ -188,7 +194,7 @@ animations = [{
 "texture": ExtResource("38_03hhr")
 }],
 "loop": true,
-"name": &"runing",
+"name": &"running",
 "speed": 5.0
 }, {
 "frames": [{
@@ -217,6 +223,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("45_fvppr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_bkxak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_p34t8")
 }],
 "loop": true,
 "name": &"vanishing",
@@ -248,26 +260,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="button_sound" type="Button" parent="."]
+[node name="soundbutton1_interrupteur_toggle" type="Button" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 524.0
-offset_right = 123.0
-offset_bottom = 644.0
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+script = ExtResource("1_8vigj")
+metadata/void = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="soundbutton1_interrupteur_toggle"]
+stream = ExtResource("1_u7k4a")
+
+[node name="soundbutton1_déclenchement_trigger" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.846
+anchor_right = 0.087
+anchor_bottom = 0.956
+offset_left = -20.344
+offset_top = -24.208
+offset_right = 22.776
+offset_bottom = 24.512
+toggle_mode = true
+script = ExtResource("53_jec38")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="soundbutton1_déclenchement_trigger"]
+stream = ExtResource("1_u7k4a")
+
+[node name="colorbutton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = 0.195
+anchor_right = 0.517
+anchor_bottom = 0.302
+offset_left = -22.5521
+offset_top = -24.36
+offset_right = 19.416
+offset_bottom = 26.304
 toggle_mode = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(565, 598)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colorbutton"]
+position = Vector2(-486, -90)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="colorbutton"]
+position = Vector2(68, 496)
 scale = Vector2(2.64063, 2.64063)
 sprite_frames = SubResource("SpriteFrames_ry48v")
-animation = &"crouching"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(11, 12)
-
-[node name="button_colors" type="Button" parent="."]
-offset_left = 1030.0
-offset_top = 524.0
-offset_right = 1148.0
-offset_bottom = 644.0
-toggle_mode = true
+animation = &"running"
+speed_scale = 1.1
+script = ExtResource("52_p34t8")
