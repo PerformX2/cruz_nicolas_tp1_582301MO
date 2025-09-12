@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bwfw8rcl2awhx" path="res://project.godot.gd" id="1_8vigj"]
 [ext_resource type="Texture2D" uid="uid://b2oyiihqyahkp" path="res://assets/images/AnimationSheet_Character_split/tile000.png" id="1_cmru6"]
 [ext_resource type="Texture2D" uid="uid://thnexdvje80g" path="res://assets/images/AnimationSheet_Character_split/tile064.png" id="1_xducm"]
+[ext_resource type="Script" uid="uid://dxjssykkgn14v" path="res://character_body_2d.gd" id="2_8vigj"]
 [ext_resource type="Texture2D" uid="uid://bknapo5jvrqnv" path="res://assets/images/AnimationSheet_Character_split/tile001.png" id="2_26v4c"]
 [ext_resource type="Texture2D" uid="uid://c24v2jwabhg2o" path="res://assets/images/AnimationSheet_Character_split/tile065.png" id="2_yeknk"]
 [ext_resource type="AudioStream" uid="uid://baradexnunv0h" path="res://assets/audio/baligator3.wav" id="2_yi46y"]
@@ -54,7 +55,6 @@
 [ext_resource type="Texture2D" uid="uid://cml3mxiht8h0s" path="res://assets/images/AnimationSheet_Character_split/tile053.png" id="47_p34t8"]
 [ext_resource type="Texture2D" uid="uid://drv55bpe4puuq" path="res://assets/images/AnimationSheet_Character_split/tile018.png" id="48_lh5hq"]
 [ext_resource type="Texture2D" uid="uid://w43q00cpjbgc" path="res://assets/images/AnimationSheet_Character_split/tile019.png" id="49_nltb4"]
-[ext_resource type="Script" uid="uid://bx4pg6r8uo7ro" path="res://animated_sprite_2d.gd" id="52_p34t8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_loi34"]
 animations = [{
@@ -259,65 +259,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.0023)
 script = ExtResource("1_8vigj")
 
-[node name="character" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.365
-anchor_top = 0.255
-anchor_right = 0.635
-anchor_bottom = 0.745
-offset_left = 0.019989
-offset_top = 0.259979
-offset_right = -0.0200806
-offset_bottom = -0.26004
-grow_horizontal = 2
-grow_vertical = 2
-text = "
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_8vigj")
 
-
-
-
-
-
-
-Lil magician
-
-🔥🔥🔥"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="character"]
-position = Vector2(158, 160)
-scale = Vector2(2.64063, 2.64063)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(571, 593.636)
+scale = Vector2(3.38403, 3.29688)
 sprite_frames = SubResource("SpriteFrames_loi34")
-animation = &"running"
+animation = &"walking"
 speed_scale = 1.1
-script = ExtResource("52_p34t8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 
 [node name="monster" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.109
-anchor_bottom = 0.193
-offset_right = -0.568008
-offset_bottom = -0.064003
-text = "Monster"
+anchor_right = 0.181
+anchor_bottom = 0.327
+offset_right = -0.512009
+offset_bottom = 0.103989
+theme_override_font_sizes/font_size = 40
+toggle_mode = true
+text = "Monster
+😥"
 
 [node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="monster"]
 stream = ExtResource("2_yi46y")
-volume_db = -9.905
+volume_db = -21.048
 
 [node name="kitty" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.891
+anchor_left = 0.821
 anchor_right = 1.0
-anchor_bottom = 0.193
-offset_left = 0.567993
-offset_bottom = -0.064003
+anchor_bottom = 0.33
+offset_left = 0.207947
+offset_bottom = 0.159988
 grow_horizontal = 0
-text = "Kitty"
+theme_override_font_sizes/font_size = 40
+toggle_mode = true
+text = "Kitty
+🥺"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="kitty"]
 stream = ExtResource("4_hreph")
-volume_db = -9.334
+volume_db = -22.667
