@@ -1,3 +1,3 @@
 # Voici le dossier de mon projet Godot
 
-On retrouve le dossier aves mes assets et des fichers créer par Godot
+On retrouve le dossier "assets" et les fichers créer par Godot
