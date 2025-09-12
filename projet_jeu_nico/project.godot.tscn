@@ -264,17 +264,19 @@ scale = Vector2(1, 1.0023)
 script = ExtResource("1_8vigj")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(550, 590.643)
 script = ExtResource("2_8vigj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(571, 593.636)
+position = Vector2(18, 2.9931)
 scale = Vector2(3.38403, 3.29688)
 sprite_frames = SubResource("SpriteFrames_loi34")
 animation = &"walking"
 speed_scale = 1.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(39, 0)
 
 [node name="monster" type="Button" parent="."]
 layout_mode = 1
