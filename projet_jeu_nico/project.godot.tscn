@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dbmvbfvan8544"]
+[gd_scene load_steps=58 format=3 uid="uid://dbmvbfvan8544"]
 
 [ext_resource type="Script" uid="uid://bwfw8rcl2awhx" path="res://project.godot.gd" id="1_8vigj"]
 [ext_resource type="Texture2D" uid="uid://b2oyiihqyahkp" path="res://assets/images/AnimationSheet_Character_split/tile000.png" id="1_cmru6"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://cml3mxiht8h0s" path="res://assets/images/AnimationSheet_Character_split/tile053.png" id="47_p34t8"]
 [ext_resource type="Texture2D" uid="uid://drv55bpe4puuq" path="res://assets/images/AnimationSheet_Character_split/tile018.png" id="48_lh5hq"]
 [ext_resource type="Texture2D" uid="uid://w43q00cpjbgc" path="res://assets/images/AnimationSheet_Character_split/tile019.png" id="49_nltb4"]
+[ext_resource type="Texture2D" uid="uid://bv7iwop5emfts" path="res://assets/images/Medieval_Castle_background.png" id="56_yi46y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_loi34"]
 animations = [{
@@ -253,6 +254,7 @@ animations = [{
 }]
 
 [node name="Control" type="Control"]
+visible = false
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0023
@@ -333,6 +335,12 @@ animation = &"running"
 speed_scale = 1.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CharacterBody2D"]
+z_index = -1
+position = Vector2(-10.7778, -222.488)
+scale = Vector2(3.58889, 3.58065)
+texture = ExtResource("56_yi46y")
 
 [connection signal="pressed" from="CanvasLayer/monster" to="." method="_on_monster_pressed"]
 [connection signal="pressed" from="CanvasLayer/kitty" to="." method="_on_kitty_pressed"]
