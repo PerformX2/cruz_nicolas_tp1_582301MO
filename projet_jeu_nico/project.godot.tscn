@@ -1,15 +1,14 @@
-[gd_scene load_steps=58 format=3 uid="uid://dbmvbfvan8544"]
+[gd_scene load_steps=57 format=3 uid="uid://dbmvbfvan8544"]
 
+[ext_resource type="Script" uid="uid://bwfw8rcl2awhx" path="res://project.godot.gd" id="1_8vigj"]
 [ext_resource type="Texture2D" uid="uid://b2oyiihqyahkp" path="res://assets/images/AnimationSheet_Character_split/tile000.png" id="1_cmru6"]
-[ext_resource type="Script" uid="uid://cjy6as8rm1h75" path="res://button_déclenchement_trigger.gd" id="1_u7k4a"]
 [ext_resource type="Texture2D" uid="uid://thnexdvje80g" path="res://assets/images/AnimationSheet_Character_split/tile064.png" id="1_xducm"]
-[ext_resource type="Script" uid="uid://r3g6fp6xngky" path="res://button_interrupteur_toggle.gd" id="2_8vigj"]
 [ext_resource type="Texture2D" uid="uid://bknapo5jvrqnv" path="res://assets/images/AnimationSheet_Character_split/tile001.png" id="2_26v4c"]
 [ext_resource type="Texture2D" uid="uid://c24v2jwabhg2o" path="res://assets/images/AnimationSheet_Character_split/tile065.png" id="2_yeknk"]
-[ext_resource type="AudioStream" uid="uid://hy6nqsc2m14u" path="res://assets/audio/suspense-tense-background-music-381891.mp3" id="2_yi46y"]
+[ext_resource type="AudioStream" uid="uid://baradexnunv0h" path="res://assets/audio/baligator3.wav" id="2_yi46y"]
 [ext_resource type="Texture2D" uid="uid://n10fydo0ext7" path="res://assets/images/AnimationSheet_Character_split/tile008.png" id="3_beifl"]
 [ext_resource type="Texture2D" uid="uid://cws5xcy5g8byo" path="res://assets/images/AnimationSheet_Character_split/tile066.png" id="3_bkxak"]
-[ext_resource type="AudioStream" uid="uid://2gpsobav3pmi" path="res://assets/audio/feux.wav" id="4_hreph"]
+[ext_resource type="AudioStream" uid="uid://b5urlirt705t0" path="res://assets/audio/Kittendistress.wav" id="4_hreph"]
 [ext_resource type="Texture2D" uid="uid://c210vvhbxernr" path="res://assets/images/AnimationSheet_Character_split/tile009.png" id="4_mm05w"]
 [ext_resource type="Texture2D" uid="uid://bxp45p184r8hb" path="res://assets/images/AnimationSheet_Character_split/tile067.png" id="4_p34t8"]
 [ext_resource type="Texture2D" uid="uid://yq46et2tc53l" path="res://assets/images/AnimationSheet_Character_split/tile068.png" id="5_jec38"]
@@ -260,22 +259,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8vigj")
 
 [node name="Button_déclenchement_trigger" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-script = ExtResource("1_u7k4a")
+offset_right = 140.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 30
+text = "Monster"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button_déclenchement_trigger"]
+[node name="AudioStreamPlayer_1" type="AudioStreamPlayer" parent="Button_déclenchement_trigger"]
 stream = ExtResource("2_yi46y")
+volume_db = -8.851
 
 [node name="Button_interrupteur_toggle" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-script = ExtResource("2_8vigj")
+layout_mode = 0
+offset_left = 160.0
+offset_top = 2.0
+offset_right = 300.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "Kitty"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button_interrupteur_toggle"]
+[node name="AudioStreamPlayer_2" type="AudioStreamPlayer" parent="Button_interrupteur_toggle"]
 stream = ExtResource("4_hreph")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -286,6 +293,5 @@ animation = &"running"
 speed_scale = 1.1
 script = ExtResource("52_p34t8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
-position = Vector2(0.027, 0.013)
-scale = Vector2(0.378698, 0.378698)
+[connection signal="pressed" from="Button_déclenchement_trigger" to="Button_déclenchement_trigger" method="_on_pressed"]
+[connection signal="pressed" from="Button_interrupteur_toggle" to="Button_déclenchement_trigger" method="_on_button_interrupteur_toggle_pressed"]
