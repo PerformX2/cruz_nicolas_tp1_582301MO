@@ -297,7 +297,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/monster"]
 stream = ExtResource("2_yi46y")
-volume_db = -28.611
+volume_db = -17.567
 
 [node name="kitty" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -319,7 +319,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/kitty"]
 stream = ExtResource("4_hreph")
-volume_db = -34.99
+volume_db = -36.831
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="CanvasLayer"]
 position = Vector2(587, 548)
