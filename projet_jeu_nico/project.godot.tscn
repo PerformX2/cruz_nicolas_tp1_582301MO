@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dbmvbfvan8544"]
+[gd_scene load_steps=57 format=3 uid="uid://dbmvbfvan8544"]
 
 [ext_resource type="Script" uid="uid://bwfw8rcl2awhx" path="res://project.godot.gd" id="1_8vigj"]
 [ext_resource type="Texture2D" uid="uid://b2oyiihqyahkp" path="res://assets/images/AnimationSheet_Character_split/tile000.png" id="1_cmru6"]
@@ -55,7 +55,6 @@
 [ext_resource type="Texture2D" uid="uid://cml3mxiht8h0s" path="res://assets/images/AnimationSheet_Character_split/tile053.png" id="47_p34t8"]
 [ext_resource type="Texture2D" uid="uid://drv55bpe4puuq" path="res://assets/images/AnimationSheet_Character_split/tile018.png" id="48_lh5hq"]
 [ext_resource type="Texture2D" uid="uid://w43q00cpjbgc" path="res://assets/images/AnimationSheet_Character_split/tile019.png" id="49_nltb4"]
-[ext_resource type="Texture2D" uid="uid://bv7iwop5emfts" path="res://assets/images/Medieval_Castle_background.png" id="56_yi46y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_loi34"]
 animations = [{
@@ -263,75 +262,49 @@ grow_vertical = 2
 scale = Vector2(1, 1.0023)
 script = ExtResource("1_8vigj")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(550, 590.643)
-script = ExtResource("2_8vigj")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-texture_filter = 1
-position = Vector2(18, 2.9931)
-scale = Vector2(3.38403, 3.29688)
-sprite_frames = SubResource("SpriteFrames_loi34")
-animation = &"walking"
-speed_scale = 1.1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(39, 0)
-
 [node name="monster" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.181
-anchor_bottom = 0.327
-offset_right = -0.512009
-offset_bottom = 0.103989
+anchor_right = 0.179
+anchor_bottom = 0.329
+offset_right = -0.207947
+offset_bottom = -0.192017
 theme_override_font_sizes/font_size = 40
-toggle_mode = true
 text = "Monster
 (click)🔊"
 
-[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="monster"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="monster"]
 stream = ExtResource("2_yi46y")
-volume_db = -21.048
+volume_db = -3.34
 
 [node name="kitty" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.821
 anchor_right = 1.0
-anchor_bottom = 0.33
-offset_left = 0.207947
-offset_bottom = 0.159988
+anchor_bottom = 0.329
+offset_left = 0.207886
+offset_bottom = -0.192017
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
-toggle_mode = true
 text = "Kitty
 (click)🔊"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="kitty"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="kitty"]
 stream = ExtResource("4_hreph")
-volume_db = -22.667
 
-[node name="MedievalCastleBackground" type="Sprite2D" parent="kitty"]
-z_index = -1
-position = Vector2(-370, 323.257)
-scale = Vector2(3.6, 3.59175)
-texture = ExtResource("56_yi46y")
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(576, 593.635)
+script = ExtResource("2_8vigj")
 
-[node name="ColorRect1" type="ColorRect" parent="kitty/MedievalCastleBackground"]
-offset_left = -158.0
-offset_top = -88.0
-offset_right = -104.0
-offset_bottom = -33.0
-color = Color(0.130769, 0.365215, 1, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(1, -0.00143695)
+scale = Vector2(3.38403, 3.29688)
+sprite_frames = SubResource("SpriteFrames_loi34")
+animation = &"walking"
+speed_scale = 1.1
 
-[node name="ColorRect2" type="ColorRect" parent="kitty/MedievalCastleBackground"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -215.0
-offset_top = -88.0
-offset_right = -162.0
-offset_bottom = -33.0
-grow_horizontal = 0
-color = Color(0.130769, 0.365215, 1, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+
+[connection signal="pressed" from="monster" to="." method="_on_monster_pressed"]
