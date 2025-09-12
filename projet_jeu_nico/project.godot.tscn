@@ -56,7 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://w43q00cpjbgc" path="res://assets/images/AnimationSheet_Character_split/tile019.png" id="49_nltb4"]
 [ext_resource type="Script" uid="uid://bx4pg6r8uo7ro" path="res://animated_sprite_2d.gd" id="52_p34t8"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ry48v"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_loi34"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -261,37 +261,63 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8vigj")
 
-[node name="Button_déclenchement_trigger" type="Button" parent="."]
-layout_mode = 0
-offset_right = 140.0
-offset_bottom = 140.0
-theme_override_font_sizes/font_size = 30
-text = "Monster"
+[node name="character" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.365
+anchor_top = 0.255
+anchor_right = 0.635
+anchor_bottom = 0.745
+offset_left = 0.019989
+offset_top = 0.259979
+offset_right = -0.0200806
+offset_bottom = -0.26004
+grow_horizontal = 2
+grow_vertical = 2
+text = "
 
-[node name="AudioStreamPlayer_1" type="AudioStreamPlayer" parent="Button_déclenchement_trigger"]
-stream = ExtResource("2_yi46y")
-volume_db = -8.851
 
-[node name="Button_interrupteur_toggle" type="Button" parent="."]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 2.0
-offset_right = 300.0
-offset_bottom = 142.0
-theme_override_font_sizes/font_size = 30
-toggle_mode = true
-text = "Kitty"
 
-[node name="AudioStreamPlayer_2" type="AudioStreamPlayer" parent="Button_interrupteur_toggle"]
-stream = ExtResource("4_hreph")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(565, 598)
+
+
+
+Lil magician
+
+🔥🔥🔥"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="character"]
+position = Vector2(158, 160)
 scale = Vector2(2.64063, 2.64063)
-sprite_frames = SubResource("SpriteFrames_ry48v")
+sprite_frames = SubResource("SpriteFrames_loi34")
 animation = &"running"
 speed_scale = 1.1
 script = ExtResource("52_p34t8")
 
-[connection signal="pressed" from="Button_déclenchement_trigger" to="Button_déclenchement_trigger" method="_on_pressed"]
-[connection signal="pressed" from="Button_interrupteur_toggle" to="Button_déclenchement_trigger" method="_on_button_interrupteur_toggle_pressed"]
+[node name="monster" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.109
+anchor_bottom = 0.193
+offset_right = -0.568008
+offset_bottom = -0.064003
+text = "Monster"
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="monster"]
+stream = ExtResource("2_yi46y")
+volume_db = -9.905
+
+[node name="kitty" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.891
+anchor_right = 1.0
+anchor_bottom = 0.193
+offset_left = 0.567993
+offset_bottom = -0.064003
+grow_horizontal = 0
+text = "Kitty"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="kitty"]
+stream = ExtResource("4_hreph")
+volume_db = -9.334
